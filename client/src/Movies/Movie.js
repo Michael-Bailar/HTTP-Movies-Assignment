@@ -23,6 +23,17 @@ const Movie = props => {
     e.preventDefault()
     props.history.push(`/update-movie/${movie.id}`)
   }
+  
+  const deleteMovie = e => {
+    console.log('delete')
+    axios
+      .delete(`http://localhost:5000/api/movies/${movie.id}`)
+      .then(res => {
+        console.log(res)
+        props.history.push('/')
+      })
+      .catch(err => console.log(err))
+  }
 
   useEffect(() => {
     fetchMovie(match.params.id);
@@ -41,6 +52,9 @@ const Movie = props => {
       </div>
       <div className='update-button' onClick={routeToEditForm}>
         Edit
+      </div>
+      <div className='delete-button' onClick={deleteMovie}>
+        Delete
       </div>
     </div>
   );

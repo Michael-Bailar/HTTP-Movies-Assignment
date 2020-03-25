@@ -23,7 +23,7 @@ const App = () => {
 
   useEffect(() => {
     getMovieList();
-  }, []);
+  }, [movieList]);
 
   return (
     <>
@@ -42,7 +42,7 @@ const App = () => {
         path="/update-movie/:id"
         render={props => <UpdateMovie {...props} movieList={movieList} setMovieList={setMovieList} />}
       />
-      
+
     </>
   );
 };
